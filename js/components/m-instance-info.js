@@ -28,6 +28,9 @@ export default class MastodonInstanceInfo extends LitElement{
             bottom: 0;
             padding: 1em;
         }
+        .clickable{
+            cursor: pointer;
+        }
     `
     static properties = {
         model: {type: Object},
@@ -46,7 +49,7 @@ export default class MastodonInstanceInfo extends LitElement{
 
     render(){
         return this.model ? html`
-            <div @click=${()=>window.open("https://${this.model.uri}",'_blank')}>
+            <div class="clickable" @click=${()=>window.open(`https://${this.model.uri}`,'_blank')}>
                 <h3 class="title">${this.model.title}</h3>
                 <img src="${this.model.thumbnail}" alt="instance thumbnail">
                 <p class="text">${this.stripTags(this.model.short_description)}</p>
